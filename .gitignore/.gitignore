@@ -1,0 +1,29 @@
+#R basics
+
+m<-matrix(data=cbind(rnorm(30,0),rnorm(30,2),rnorm(30,5)),nrow=30,ncol=3)
+#rnorm(A,B): A=number of observations B=mean
+colnames(m)<-c("series 1","series 2","series 3")
+
+#apply: second argument tells apply to travers row wise or columnwise
+apply(m,2,mean)#result verifies means of each column
+
+#applying own function (is column a single colum of a matrix or just a vector)
+myfunction1 <- function(x) {is.matrix(x)}
+apply(m,2,myfunction1)
+
+#applying own function (is column a single colum of a matrix or just a vector)
+myfunction2 <- function(x) {is.vector(x)}
+apply(m,2,myfunction2)
+
+
+#How many negative numbers in each column
+myfunction3 <- function(x){length(x[x<0])}
+apply(m,2,myfunction3)
+
+#Sometime we require traversal of our data in a less than linear way 
+#calling a function for each specific item
+sapply(m,myfunction1)
+lapply(m,myfunction1)
+
+#sapply works on a list or vector
+#lapply is similar but will only return a list
