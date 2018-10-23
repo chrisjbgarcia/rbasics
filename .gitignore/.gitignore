@@ -27,3 +27,4 @@ lapply(m,myfunction1)
 
 #sapply works on a list or vector
 #lapply is similar but will only return a list
+
